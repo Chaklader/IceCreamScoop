@@ -1,27 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
-import {useState} from "react";
+import {useState} from 'react';
+import OrderEntry from "./pages/entry/OrderEntry";
+import {OrderDetailsProvider} from "./contexts/OrderDetails";
+import {Container} from "react-bootstrap";
 
-// https://react-bootstrap.netlify.app/getting-started/introduction#browser-globals
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+    const [orderPhase, setOrderPhase] = useState('inProgress');
+
+    let Component = OrderEntry;
+
+    switch (orderPhase) {
+
+        case 'inProgress': {
+            Component = OrderEntry;
+            break;
+        }
+
+        case 'review': {
+            break;
+        }
+
+        case 'completed': {
+            break;
+        }
+
+        default: {
+
+        }
+    }
+
+
+    return (
+
+        <OrderDetailsProvider>
+            <Container>{<Component setOrderPhase={setOrderPhase}/>}</Container>
+        </OrderDetailsProvider>
+    );
 }
 
 export default App;
