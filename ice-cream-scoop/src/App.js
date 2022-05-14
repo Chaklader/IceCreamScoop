@@ -3,6 +3,8 @@ import {useState} from 'react';
 import OrderEntry from "./pages/entry/OrderEntry";
 import {OrderDetailsProvider} from "./contexts/OrderDetails";
 import {Container} from "react-bootstrap";
+import OrderSummary from "./pages/summary/OrderSummary";
+import OrderConfirmation from "./pages/confirmation/OrderConfirmation";
 
 function App() {
 
@@ -11,22 +13,29 @@ function App() {
 
     let Component = OrderEntry;
 
-    switch (orderPhase) {
+    switch (orderPhase)
+    {
 
-        case 'inProgress': {
+        case 'inProgress':
+        {
             Component = OrderEntry;
             break;
         }
 
-        case 'review': {
+        case 'review':
+        {
+            Component = OrderSummary;
             break;
         }
 
-        case 'completed': {
+        case 'completed':
+        {
+            Component = OrderConfirmation;
             break;
         }
 
-        default: {
+        default:
+        {
 
         }
     }

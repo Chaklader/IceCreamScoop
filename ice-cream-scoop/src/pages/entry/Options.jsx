@@ -39,7 +39,7 @@ function Options({optionType}) {
                 updateItemCount(itemName, newItemCount, optionType)}
         />
     ));
-    
+
     return (
         <>
             <h2>{title}</h2>
